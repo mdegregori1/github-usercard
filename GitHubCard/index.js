@@ -2,6 +2,20 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+const firstStep = document.querySelector('.cards');
+
+axios 
+  .get("https://api.github.com/users/mdegregori1")
+  .then(response => {
+    console.log(response);
+    response.data(item =>{
+      const newCard = makeCard(item);
+      firstStep.appendChild(newCard)
+    })
+  })
+  .catch(error => {
+    console.log("The Data Wasn't Returned", error);
+  });
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -9,6 +23,7 @@
 
    Skip to Step 3.
 */
+
 
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
@@ -24,7 +39,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+// const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -53,3 +68,32 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+//Calling my own card to the dom 
+
+// function myInfo(data){
+//   const
+//     card = document.createElement('div');
+//     profilePic = document.createElement('img');
+//     cardInfo = document.createElement('div');
+//     usersName = document.createElement('h3');
+//     userName = document.createElement('p');
+//     Location = document.createElement('p');
+//     Profile = document.createElement('p')
+//     profileTag = document.createElement('a');
+//     Followers = document.createElement('p');
+//     Following = document.createElement('p');
+//     userBio = document.createElement('p');
+
+
+//   // classes 
+
+//   card.classList.add('card');
+//   cardInfo.classList.add('card-info');
+//   usersName.classList.add('name');
+//   userName.classList.add('username');
+
+  // append (add) data
+  
+
+
