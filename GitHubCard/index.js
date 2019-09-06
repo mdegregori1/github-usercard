@@ -7,8 +7,8 @@ const firstStep = document.querySelector('.cards');
 axios 
   .get("https://api.github.com/users/mdegregori1")
   .then(response => {
-    console.log(response);
-    const newCard = makeCard(response);
+    console.log('here is your data',response.data);
+    const newCard = makeCard(response.data);
     firstStep.appendChild(newCard);
   })
   .catch(error => {
@@ -37,7 +37,7 @@ axios
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+// const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -106,17 +106,15 @@ cardInfo.appendChild(userBio);
 // //content 
 profilePic.src = array.avatar_url;
 usersName.textContent = array.name;
-userName.textContent = array.login;
-Location.textContent = array.location;
+userName.textContent = `Username: ${array.login}`;
+Followers.textContent = `Followers: ${array.followers}`;
+Following.textContent = `Following: ${array.following}`;
+Location.textContent = `Location: ${array.location}`;
 profileTag.href = array.html_url;
 profileTag.textContent = array.html_url;
-Followers.textContent = (`Followers: ${array.followers}`);
-Following.textContent = (`Following: ${array.following}`);
-userBio.textContent = (`Bio ${array.bio}`);
+userBio.textContent = `Bio: ${array.bio}`;
 
 
 
-
-
-return card
+return card;
 }
