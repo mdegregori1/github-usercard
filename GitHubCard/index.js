@@ -8,10 +8,8 @@ axios
   .get("https://api.github.com/users/mdegregori1")
   .then(response => {
     console.log(response);
-    response.data(item =>{
-      const newCard = makeCard(item);
-      firstStep.appendChild(newCard)
-    })
+    const newCard = makeCard(response);
+    firstStep.appendChild(newCard);
   })
   .catch(error => {
     console.log("The Data Wasn't Returned", error);
@@ -39,7 +37,7 @@ axios
           user, and adding that card to the DOM.
 */
 
-// const followersArray = [];
+const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -71,29 +69,54 @@ axios
 
 //Calling my own card to the dom 
 
-// function myInfo(data){
-//   const
-//     card = document.createElement('div');
-//     profilePic = document.createElement('img');
-//     cardInfo = document.createElement('div');
-//     usersName = document.createElement('h3');
-//     userName = document.createElement('p');
-//     Location = document.createElement('p');
-//     Profile = document.createElement('p')
-//     profileTag = document.createElement('a');
-//     Followers = document.createElement('p');
-//     Following = document.createElement('p');
-//     userBio = document.createElement('p');
+function makeCard(array){
+  const
+    card = document.createElement('div');
+    profilePic = document.createElement('img');
+    cardInfo = document.createElement('div');
+    usersName = document.createElement('h3');
+    userName = document.createElement('p');
+    Location = document.createElement('p');
+    Profile = document.createElement('p')
+    profileTag = document.createElement('a');
+    Followers = document.createElement('p');
+    Following = document.createElement('p');
+    userBio = document.createElement('p');
 
 
 //   // classes 
 
-//   card.classList.add('card');
-//   cardInfo.classList.add('card-info');
-//   usersName.classList.add('name');
-//   userName.classList.add('username');
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  usersName.classList.add('name');
+  userName.classList.add('username');
 
-  // append (add) data
-  
+//  // append (add) data
+card.appendChild(profilePic);
+card.appendChild(cardInfo);
+cardInfo.appendChild(usersName);
+cardInfo.appendChild(userName);
+cardInfo.appendChild(Location);
+cardInfo.appendChild(Profile);
+cardInfo.appendChild(profileTag);
+cardInfo.appendChild(Followers);
+cardInfo.appendChild(Following);
+cardInfo.appendChild(userBio);
+
+// //content 
+profilePic.src = array.avatar_url;
+usersName.textContent = array.name;
+userName.textContent = array.login;
+Location.textContent = array.location;
+profileTag.href = array.html_url;
+profileTag.textContent = array.html_url;
+Followers.textContent = (`Followers: ${array.followers}`);
+Following.textContent = (`Following: ${array.following}`);
+userBio.textContent = (`Bio ${array.bio}`);
 
 
+
+
+
+return card
+}
