@@ -37,7 +37,33 @@ axios
           user, and adding that card to the DOM.
 */
 
-// const followersArray = [];
+const followersArray = 
+  ["arizephyr123",
+  "crsullivan",
+  "abdirahmanfarah",
+  "sydneyblom",
+  "rrrbba"];
+
+  followersArray.forEach(usernames =>{
+
+    return axios
+    .get(`https://api.github.com/users/${usernames}`)
+    .then(response =>{
+      console.log('Data is present', response.data);
+
+
+      newUserCards = makeCard(response.data)
+      firstStep.appendChild(newUserCards)
+    })
+
+    .catch(error => {
+      console.log('not working!!', error);
+    })
+
+  });
+
+
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -115,6 +141,6 @@ profileTag.textContent = array.html_url;
 userBio.textContent = `Bio: ${array.bio}`;
 
 
-
 return card;
 }
+
